@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class GenTree {
+public class GenTree implements Printable, Writable {
     private Person person;
     private TreeMap<String, Set<Person>> family;
 
@@ -104,7 +104,7 @@ public class GenTree {
         return person;
     }
 
-    public void printFamily() {
+    public void printInfo() {
         System.out.println(this.person);
         for (Map.Entry<String, Set<Person>> item : this.family.entrySet()) {
             if (item.getValue() != null && !item.getValue().isEmpty()) {
@@ -118,7 +118,7 @@ public class GenTree {
         }
     }
 
-    public void writeToFile() {
+    public void writeInfo() {
         File dirCont = new File("familyInfo.txt");
         try {
             boolean created = dirCont.createNewFile();
