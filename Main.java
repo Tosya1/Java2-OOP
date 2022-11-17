@@ -1,3 +1,4 @@
+
 public class Main {
     public static void main(String[] args) {
         Person p1 = new Person("Василий", "Иванов", 125845, "12.05.2002", true);
@@ -16,8 +17,8 @@ public class Main {
         p5.addChild(p8, p7);
         p1.printInfo();
         p8.writeInfo();
-        GenTree gt1 = new GenTree(p2);
-        GenTree gt2 = new GenTree(p5);
+        GenTree<Person> gt1 = new GenTree<>(p2);
+        GenTree<Person> gt2 = new GenTree<>(p5);
         gt1.printInfo();
         gt2.writeInfo();
     }
