@@ -3,22 +3,25 @@ import java.util.Set;
 
 public class Presenter {
     private Set<Model> users = new HashSet<>();
-    private View view = new View();
+    private View view;
 
-    public void inputInfo() {
+    public Presenter(View view) {
+        this.view = view;
+    }
+
+    public void inputInfo(Model model) {
         String choise = view.getOption();
-        String name = view.getName();
-        String password = view.getPassword();
+        model.setName(view.getName());
+        model.setPassword(view.getPassword());
         if (Integer.parseInt(choise) == 1) {
-            String email = view.getEmail();
-            String birthDate = view.getBirthDate();
-            Model user = new Model(name, password, email, birthDate);
-            users.add(user);
-            view.print("Регистрация прошла успешно");
+            model.setEmail(view.getEmail());
+            model.setBirthDate(view.getBirthDate());
+            users.add(model);
+            view.print("Регистрация прошла успешно.");
         } else if (Integer.parseInt(choise) == 2) {
             for (Model user : users) {
-                if (user.get(0).equals(name) && user.get(1).equals(password)) {
-                    view.print("Авторизация прошла успешно");
+                if (user.getName().equals(model.getName()) && user.getPassword().equals(model.getPassword())) {
+                    view.print("Авторизация прошла успешно.");
                 } else {
                     view.print("Пользователь не зарегистрирован. Пройдите регистрацию.");
                 }
@@ -28,8 +31,9 @@ public class Presenter {
 
     public void printUsers() {
         for (Model user : users) {
-            view.print("Имя: " + user.get(0) + "; Пароль: " + user.get(1) + "; Email: " + user.get(2)
-                    + "; Дата рождения: " + user.get(3));
+            view.print("Имя: " + user.getName() + "; Пароль: " + user.getPassword() + "; Email: " + user.getEmail()
+                    + "; Дата рождения: " + user.getBirthDate());
         }
     }
+
 }
