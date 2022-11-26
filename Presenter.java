@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Presenter {
-    private static Set<Model> users = new HashSet<>();
+    private Set<Model> users = new HashSet<>();
     private View view;
 
     public Presenter(View view) {
